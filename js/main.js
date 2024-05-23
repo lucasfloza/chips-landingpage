@@ -36,7 +36,7 @@ const shadowHeader = () => {
 }
 window.addEventListener('scroll', shadowHeader)
 
-/*=============== SWIPER ===============*/
+/*================== SWIPER ==================*/
 
 const swiperFavorites = new Swiper('.favorites__swiper', {
     loop: true,
