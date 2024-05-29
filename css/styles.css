@@ -13,6 +13,7 @@
   --shadow-img: drop-shadow(0 12px 24px hsla(0, 0%, 0%, .4));
   --shadow-circle: 0 12px 24px hsla(0, 0%, 0%, .4);
   --shadow-button: 0 -4px 8px hsla(0, 0%, 0%, .3);
+  --shadow-button-hover: inset 0 0 0 3px hsla(0, 0%, 0%, .3);
   --shadow-card: 0 -8px 24px hsla(0, 0%, 0%, .3);
   --shadow-text: 0 2px 4px var(--first-color-darken);
 
@@ -102,6 +103,7 @@ img {
 
 .header {
   position: fixed;
+  overflow: hidden;
   width: 100%;
   top: 0;
   left: 0;
@@ -196,7 +198,6 @@ img {
 
 .show-menu {
   left: 0;
-  /* display: flex; */
 }
 
 .shadow-header {
@@ -316,14 +317,26 @@ img {
   font-weight: var(--font-semi-bold);
   padding: .75rem 2rem;
   border-radius: 4rem;
-  box-shadow: inset var(-shadow-button);
+  box-shadow: var(--shadow-button);
+  transition: all 0.2s ease-in-out 0s;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: none;
 }
 
 .button__ghost {
   background-color: transparent;
   box-shadow: none;
   border: 2px solid var(--second-color);
-  color: var(--second-color)
+  color: var(--second-color);
+  transition: all 0.2s ease-in-out 0s;
+}
+
+.button__ghost:hover {
+  box-shadow: none;
+  color: var(--second-color-dark);
 }
 
 /*=============== FAVORITES ===============*/
@@ -473,9 +486,12 @@ img {
 .products__container {
   position: relative;
   padding-top: 4.5rem;
+  display: flex;
+  justify-content: center;
 }
 
 .products__content {
+  width: 100%;
   grid-template-columns: repeat(3, 1fr);
   gap: 5rem 1.5rem;
 }
@@ -657,9 +673,8 @@ img {
 }
 
 .footer__content {
-  grid-template-columns: repeat(2, max-content);
+  grid-template-columns: repeat(1, max-content);
   justify-content: center;
-  row-gap: 3.5rem;
 }
 
 .footer__copy {
@@ -763,13 +778,13 @@ img {
   }
 
   .products__content {
-    grid-template-columns: 160px;
+    grid-template-columns: repeat(1, 160px) !important;
     justify-content: center;
   }
 
   .footer__content {
-    grid-template-columns: 1fr;
     justify-items: center;
+    overflow: hidden;
     row-gap: 1.5rem;
   }
 
@@ -805,8 +820,9 @@ img {
   }
 
   .footer__content {
-    grid-template-columns: repeat(3, max-content);
-    justify-content: space-between;
+    grid-template-columns: repeat(1, max-content);
+    text-align: center;
+    justify-content: center;
     align-items: center;
   }
 
@@ -822,9 +838,6 @@ img {
 
 @media screen and (max-width: 768px) {
 
-  .products__content {
-    grid-template-columns: repeat(3, 160px);
-  }
 
   .contact {
     grid-template-columns: 550px;
@@ -918,6 +931,7 @@ img {
 
   .favorites__container {
     grid-template-columns: 520px;
+    justify-content: center;
     row-gap: 4rem;
   }
 
@@ -930,7 +944,7 @@ img {
     right: -18rem;
   }
 
-  .favorites__cheese-1 {
+  .favorites__cheese-2 {
     left: -18rem;
   }
 
@@ -995,25 +1009,25 @@ img {
   }
 
   .products__content {
-    grid-template-columns: repeat(3, 250px);
+    /* grid-template-columns: repeat(3, 250px); */
     gap: 10rem 4rem;
   }
 
-  .products__card{
+  .products__card {
     padding: 11rem 2rem 2rem;
     border-radius: 1.5rem;
   }
 
-  .products__img{
+  .products__img {
     width: 170px;
     top: -5rem;
   }
 
-  .products__price{
+  .products__price {
     font-size: var(--h3-font-size);
   }
 
-  .products__button{
+  .products__button {
     right: 2rem;
     bottom: 2rem;
     padding: 6px;
@@ -1023,33 +1037,33 @@ img {
 
   .products__crab,
   .products__hamburger,
-  .products__cheese{
+  .products__cheese {
     width: 80px;
   }
 
-  .products__crab{
+  .products__crab {
     top: 2rem;
   }
 
-  .products__hamburger{
+  .products__hamburger {
     top: 30rem;
     right: 3rem;
   }
 
-  .products__cheese{
+  .products__cheese {
     left: 4rem;
     margin: initial;
   }
 
-  .contact{
+  .contact {
     display: block;
   }
 
-  .contact__container{
+  .contact__container {
     border-radius: 4rem;
   }
 
-  .contact__content{
+  .contact__content {
     grid-template-columns: 330px / 360px 320px;
     justify-content: center;
     align-items: flex-start;
@@ -1057,58 +1071,56 @@ img {
     padding-top: 2rem;
   }
 
-  .contact__data{
+  .contact__data {
     text-align: initial;
     grid-template: max-content / repeat(2, max-content);
     gap: 3rem 2rem;
   }
 
-  .contact__title{
+  .contact__title {
     margin-bottom: .75rem;
   }
 
-  .contact__social{
+  .contact__social {
     justify-content: initial;
   }
 
-  .contact__img{
+  .contact__img {
     width: 320px;
-    transform: translateY(-6rem);
   }
 
   .contact__shrimp,
   .contact__crab,
-  .contact__meat{
+  .contact__meat {
     width: 80px;
   }
 
-  .contact__shrimp{
-    left: 0;
-    right: 0;
+  .contact__shrimp {
+    right: 10rem;
     margin: 0 auto;
     top: 20rem;
   }
 
-  .contact__crab{
+  .contact__crab {
     top: 5rem;
-    left: 4rem;
+    left: 10rem;
   }
 
-  .contact__meat{
+  .contact__meat {
     right: initial;
     left: 12rem;
-    bottom: -1rem;
+    bottom: 5rem;
   }
 
-  .footer{
+  .footer {
     padding-block: 5rem 3rem;
   }
 
-  .footer__container{
-    row-gap: 3rem;
+  .footer__container {
+    row-gap: 3, 5rem;
   }
 
-  .scrollup{
+  .scrollup {
     right: 3rem;
   }
 
