@@ -74,3 +74,22 @@ const scrollActive = () =>{
 	})
 }
 window.addEventListener('scroll', scrollActive)
+
+/*=============== SCROLL REVEAL ANIMATION ===============*/
+const scrollReveal = ScrollReveal({
+    origin: 'top',
+    distance: '60px',
+    duration: 2500,
+    delay: 300,
+    reset: true,
+
+})
+
+scrollReveal.reveal(`.home__data, .favorites__container, .footer__container`)
+scrollReveal.reveal(`.home__circle, .home__img`, { delay: 600, scale: .5 })
+scrollReveal.reveal(`.home__chips-1, .home__chips-2, .home__chips-3`, { delay: 1000, interval: 100 })
+scrollReveal.reveal(`.home__leaf,`, { delay: 1200 })
+scrollReveal.reveal(`.home__tomato-1, .home__tomato-2`, { delay: 1400, interval: 100 })
+scrollReveal.reveal(`.care__img, .contact__img`, { origin: 'left' })
+scrollReveal.reveal(`.care__list, .contact__data`, { origin: 'right' })
+scrollReveal.reveal(`.banner__item, .products__card`, { interval: 100 })
